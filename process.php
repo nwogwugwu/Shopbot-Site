@@ -37,3 +37,11 @@ else
 
 ?>
 </body></html>
+
+DECLARE @max_order_id INT
+SET @max_order_id = SELECT MAX(`order_id`) FROM `kinetic`.`customer_orders`
+
+DELETE * FROM `kinetic`.`orders_simplified`
+INSERT INTO `kinetic`.`orders_simplified` (`latest_order_id`, `order`) SELECT `order_id`, `id_list`
+FROM `kinetic`.`customer_orders`
+WHERE `order_id` = @max_order_id

@@ -149,30 +149,12 @@
         <li id="simple3Tab">    
         
           <!-- pickup time -->
-  <label for="selectList">Time to pick up</label>
-  <select id="selectList" name = "pick_up_time" >
-    <option value="this evening">This Evening</option>
-    <option value="tomorrow morning">Tomorrow Morning</option>
-    <option value="tomorrow evening">Tomorrow Evening</option>
-  </select>
-  
-    <fieldset>
-    <label for="">Payment Method</label>
-    <label for="regularRadio">
-      <input type="radio" name="cash" id="regularRadio" value="cash" />
-      <span>Cash</span>
-    </label>
-    <label for="secondRegularRadio" name="payment_method">
-      <input type="radio" name="credit" id="secondRegularRadio" value="card" />
-      <span>Credit Card</span>
-    </label>
-  </fieldset>
-  
-  	<label for="card_number">Credit Card Number</label>
-	<input type="text" name = "card_number" id="card_number" />
-    
+
+<label for="pick_up_time">Time to pick up</label>
+<input type="text"  name = "pick_up_time" id="pick_up_time" />
+<label for="card_number">Card Number</label>
+<input type="text" name = "card_number" id="card_number" />
     <input type="submit" />
-          
       
         </li>
         
@@ -212,7 +194,7 @@
 
       <h4>Paying</h4>
 	  <p>
-		Right now, we accept credit card and cash
+		Right now, we accept credit card and cash. <br> If you intend to pay for your order with cash, please type "cash" in for your credit card number.
 		<br><br>
 		If you select the cash option,
     	you will be able to pay when you pick up your groceries.
