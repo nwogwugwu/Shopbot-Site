@@ -113,7 +113,10 @@
 <body>
 
   <div class="row">
-    <div class="twelve columns">
+<div class="four columns">
+<a href="welcome_page.php"><img src="home.png" ></a>
+</div>
+    <div class="eight columns">
       <h2>All done!</h2>
 	  <h4>Your order is being processed now.<h4>
       <hr />
@@ -189,7 +192,6 @@
       <center><p><b>Phone Number: </b><?php echo $customer_phone; ?> </p>	</center>
       <br>
       <center><p><b>Pick Up Time: </b><?php echo $pick_up_time; ?> </p></center>
-      <center><p><b>Payment Method: </b><?php echo $payment_method; ?> </p></center>
       <center><p><b>Card Number </b><?php echo $card_number; ?> </p></center>
       <br>
       <center><img src="kineticlogo.jpg" width="500" ></center>

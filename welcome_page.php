@@ -30,16 +30,23 @@
 <body>
 
   <div class="row">
-  
-  <div class="eight columns"> 
-      <h2>Kinetic Presents</h2>
-      <h3>The Automated Grocery Shopping Experience</h3>
+
+    <div class="four columns">
+    <a href="welcome_page.php"><img src="home.png" ></a>
+    </div>
+
+  <div class="eight columns">
+      <center><h2>Kinetic Presents</h2></center>
+      <center><h4>The Automated Grocery Shopping Experience</h4></center>
+        <hr /></div>
   </div>
-  <hr />
-  </div>
+
+
 
   <div class="row">
     <div class="eight columns">
+
+
 
       <div class="row">
         <div class="eight columns">

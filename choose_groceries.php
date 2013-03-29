@@ -15,10 +15,15 @@
   <script src="javascripts/modernizr.foundation.js"></script>
 
 </head>
+<script language="JavaScript" src="gen_validatorv4.js"
+type="text/javascript" xml:space="preserve"></script>
 <body>
 
   <div class="row">
-    <div class="twelve columns">
+<div class="four columns">
+<a href="welcome_page.php"><img src="home.png" ></a>
+</div>
+    <div class="eight columns">
       <h2>Choose your groceries </h2>
       <hr />
     </div>
@@ -35,10 +40,10 @@
       </dl>
       </center>   
       
-<form action = "confirmation_page.php" method = "post">
+<form action = "confirmation_page.php" method = "post" id="myform">
       <ul class="tabs-content">      
       
-        <li class="active" id="simple1Tab">    
+        <li class="active" id="simple1Tab">
 		  <label for="customer_name">Name</label>
 		  <input type="text"  name = "customer_name" id="customer_name" />
 		  <label for="customer_email">Email</label>
@@ -145,7 +150,9 @@
         </table>
         </table>
         </li>
-        
+
+<script type="text/javascript" src="validate.min.js"></script>
+
         <li id="simple3Tab">    
         
           <!-- pickup time -->
@@ -194,7 +201,7 @@
 
       <h4>Paying</h4>
 	  <p>
-		Right now, we accept credit card and cash. <br> If you intend to pay for your order with cash, please type "cash" in for your credit card number.
+		Right now, we only accept credit cards.
 		<br><br>
 		If you select the cash option,
     	you will be able to pay when you pick up your groceries.
@@ -225,11 +232,23 @@
         num_item = parseInt(document.getElementById(textbox_name).value);
       return items_so_far + num_item;
     }
-    
-    function check_if_valid(total_items, )
-    {
-    	
-    }
   </script>
+
+<script  type="text/javascript">
+    var frmvalidator = new Validator("myform");
+    frmvalidator.addValidation("customer_name","req","Please enter your  Name");
+
+    frmvalidator.addValidation("customer_email","req","Please enter your EMail");
+    frmvalidator.addValidation("customer_email","email", "Invalid email address");
+
+    frmvalidator.addValidation("phone_number","req", "Please enter your phone number");
+    frmvalidator.addValidation("phone_number","numeric", "Invalid Phone Number");
+
+    frmvalidator.addValidation("pick_up_time","req", "Please enter your pick up time");
+
+    frmvalidator.addValidation("card_number","req", "Please enter your card number");
+    frmvalidator.addValidation("card_number","numeric", "Invalid Card Number");
+</script>
+
 </body>
 </html>
