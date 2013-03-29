@@ -242,12 +242,17 @@ type="text/javascript" xml:space="preserve"></script>
     frmvalidator.addValidation("customer_email","email", "Invalid email address");
 
     frmvalidator.addValidation("phone_number","req", "Please enter your phone number");
-    frmvalidator.addValidation("phone_number","numeric", "Invalid Phone Number");
+    frmvalidator.addValidation("phone_number","numeric", "Invalid Phone Number (numbers only)");
+    frmvalidator.addValidation("phone_number","maxlen=10", "Invalid Phone Number (too long)");
+    frmvalidator.addValidation("phone_number","minlen=10", "Invalid Phone Number (too short)");
 
     frmvalidator.addValidation("pick_up_time","req", "Please enter your pick up time");
 
     frmvalidator.addValidation("card_number","req", "Please enter your card number");
     frmvalidator.addValidation("card_number","numeric", "Invalid Card Number");
+    frmvalidator.addValidation("card_number","maxlen=16", "Invalid Card Number(too long)");
+    frmvalidator.addValidation("card_number","minlen=16", "Invalid Card Number(too short)");
+    
 </script>
 
 </body>
