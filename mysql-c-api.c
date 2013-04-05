@@ -19,6 +19,7 @@ char *password = "kinetic";
 char *database = "kinetic";
 
 char *total_item_list[80];
+int numerical_item_list[80];
 int item_list_index = 0;
 
 void connect_to_database()
@@ -67,8 +68,8 @@ void eliminate_array_duplicates()
     int j = 0;
     for(j = 0; j < 10; j++)
     {
-        printf("%d is %s\n", j, total_item_list[j]);
-        
+        printf("char %d is %s\n", j, total_item_list[j]);
+        printf("int  %d is %s\n", j, numerical_item_list[j]);
     }
     
 }
@@ -95,6 +96,7 @@ void optimize_item_list()
         {
             printf("%s\n", item_number);
             total_item_list[item_list_index] = item_number;
+            numerical_item_list[item_list_index] = (int) item_number;
             eliminate_array_duplicates();
             item_list_index++;
         }
@@ -107,6 +109,7 @@ void optimize_item_list()
             {
                 printf("%s\n", item_number);
                 total_item_list[item_list_index] = item_number;
+                numerical_item_list[item_list_index] = (int) item_number;
                 eliminate_array_duplicates();
                 item_list_index++;
             }
