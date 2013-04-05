@@ -1,7 +1,9 @@
-/* 
-See url for more info:
-http://www.cyberciti.biz/tips/linux-unix-connect-mysql-c-api-program.html
-
+/*
+        to compile:
+        gcc -o make_shopbot_list $(mysql_config --cflags) make_shopbot_list.c $(mysql_config --libs)
+ 
+        to execute:
+        make_shopbot_list
 */
 
 #include <mysql.h>
@@ -11,7 +13,9 @@ http://www.cyberciti.biz/tips/linux-unix-connect-mysql-c-api-program.html
 MYSQL *conn;
 MYSQL_RES *res;
 FILE * output_file;
+FILE * input_file;
 MYSQL_ROW row;
+
 
 char *server = "localhost";
 char *user = "root";
@@ -20,7 +24,9 @@ char *database = "kinetic";
 
 char *total_item_list[80];
 int numerical_item_list[80];
+int consolidated_item_list[80];
 int item_list_index = 0;
+int cons_list_index = 0;
 
 void connect_to_database()
 {
@@ -48,10 +54,10 @@ void make_query(char * query)
     output_file = fopen("mysql_resutls.txt", "w");
     
     // output table name and print to a text file
-    printf("%s:\n", query);
+    //printf("%s:\n", query);
     while ((row = mysql_fetch_row(res)) != NULL)
     {
-        printf("%s \n", row[0]);
+        //printf("%s \n", row[0]);
         fprintf(output_file, "%s\n", row[0]);
     }
     fclose(output_file);
@@ -66,12 +72,33 @@ void make_query(char * query)
 void eliminate_array_duplicates()
 {
     int j = 0;
-    for(j = 0; j < 10; j++)
+    int k;
+    int is_unique;
+    
+    for (j = 0; j < item_list_index; j++)    // for every number in the array
     {
-        printf("char %d is %s\n", j, total_item_list[j]);
-        printf("int  %d is %s\n", j, numerical_item_list[j]);
+        is_unique = 1;
+        
+        k = j+1;
+        for (k = j+1; k < item_list_index; k++) //check remainder of the array for a duplicate
+            if (numerical_item_list[j] == numerical_item_list[k]) is_unique = 0;
+        
+        if (is_unique == 1)     // if no duplicates, transfer int to new array
+        {
+            consolidated_item_list[cons_list_index] = numerical_item_list[j];
+            cons_list_index++;
+        }
     }
     
+    //      enter results into text file
+    input_file = fopen("shopbot_list.txt", "w");
+    int n = 0;
+    for (n = 0; n < cons_list_index; n++)
+    {
+        //printf("%d is %d\n", n, consolidated_item_list[n]);
+        fprintf(input_file, "%d\n", consolidated_item_list[n]);
+    }
+    fclose(output_file);
 }
 
 void optimize_item_list()
@@ -86,18 +113,13 @@ void optimize_item_list()
         //      print mysql_results.txt
         num_lines++;
         int more_items = 1;
-        printf("num_lines: %d\n", num_lines);
-        printf("line is: %s\n", line);
-        
         
         //      separate lines into their respective number
         item_number = strtok(line, " ");
         if(item_number)
         {
-            printf("%s\n", item_number);
-            total_item_list[item_list_index] = item_number;
-            numerical_item_list[item_list_index] = (int) item_number;
-            eliminate_array_duplicates();
+            //printf("%s\n", item_number);
+            numerical_item_list[item_list_index] = atoi(item_number);
             item_list_index++;
         }
         else more_items = 0;
@@ -107,10 +129,8 @@ void optimize_item_list()
             item_number = strtok(NULL, " ");
             if(item_number)
             {
-                printf("%s\n", item_number);
-                total_item_list[item_list_index] = item_number;
-                numerical_item_list[item_list_index] = (int) item_number;
-                eliminate_array_duplicates();
+                //printf("%s\n", item_number);
+                numerical_item_list[item_list_index] = atoi(item_number);
                 item_list_index++;
             }
             else more_items = 0;
@@ -129,7 +149,7 @@ int main(void) {
     mysql_free_result(res);
     mysql_close(conn);
     
-    
+    //  output condensed list to shopbot_list.txt
     optimize_item_list();
     
   return 0;
