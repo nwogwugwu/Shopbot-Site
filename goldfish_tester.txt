@@ -1,0 +1,12 @@
+MySQL Tables in mysql database:
+Items 
+customer_orders 
+MySQL Item table:
+61 
+63 
+64 
+65 
+66 
+67 
+68 
+72 
