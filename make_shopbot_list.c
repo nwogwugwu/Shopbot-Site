@@ -3,7 +3,7 @@
         gcc -o make_shopbot_list $(mysql_config --cflags) make_shopbot_list.c $(mysql_config --libs)
  
         to execute:
-        make_shopbot_list
+        /.make_shopbot_list
 */
 
 #include <mysql.h>
@@ -139,7 +139,6 @@ void optimize_item_list()
         item_number = strtok(line, " ");
         if(item_number)
         {
-            //printf("%s\n", item_number);
             numerical_item_list[item_list_index] = atoi(item_number);
             item_list_index++;
         }
@@ -150,7 +149,6 @@ void optimize_item_list()
             item_number = strtok(NULL, " ");
             if(item_number)
             {
-                //printf("%s\n", item_number);
                 numerical_item_list[item_list_index] = atoi(item_number);
                 item_list_index++;
             }
