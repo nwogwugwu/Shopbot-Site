@@ -88,11 +88,32 @@ void eliminate_array_duplicates()
             consolidated_item_list[cons_list_index] = numerical_item_list[j];
             cons_list_index++;
         }
+    }    
+
+    //          bubble sort and shift
+    int x, y, z, temp;
+    for (x = cons_list_index; x > 0; x--)
+    {
+        for (y = 1; y <= x; y++)
+        {
+            if (consolidated_item_list[y-1] > consolidated_item_list[y])
+            {
+                temp = consolidated_item_list[y-1];
+                consolidated_item_list[y-1] = consolidated_item_list[y];
+                consolidated_item_list[y] = temp;
+            }
+        }
     }
+    for (z = 0; z < cons_list_index; z++)
+    {
+        consolidated_item_list[z] = consolidated_item_list[z+1];
+    }
+    
+    
     
     //      enter results into text file
     input_file = fopen("shopbot_list.txt", "w");
-    int n = 0;
+    int n;
     for (n = 0; n < cons_list_index; n++)
     {
         //printf("%d is %d\n", n, consolidated_item_list[n]);
