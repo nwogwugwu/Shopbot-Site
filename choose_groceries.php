@@ -21,7 +21,7 @@ type="text/javascript" xml:space="preserve"></script>
 
   <div class="row">
 <div class="four columns">
-<a href="welcome_page.php"><img src="home.png" ></a>
+<a href="index.php"><img src="home.png" ></a>
 </div>
     <div class="eight columns">
       <h2>Choose your groceries </h2>

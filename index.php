@@ -32,7 +32,7 @@
   <div class="row">
 
     <div class="four columns">
-    <a href="welcome_page.php"><img src="home.png" ></a>
+    <a href="index.php"><img src="home.png" ></a>
     </div>
 
   <div class="eight columns">
